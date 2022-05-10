@@ -38,8 +38,8 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-          echo "yo!" &&
-          cd ${GITHUB_WORKSPACE} && git reset --hard origin/main &&
+          echo "yo! ${GITHUB_WORKSPACE} $GITHUB_WORKSPACE" &&
+          cd ${GITHUB_WORKSPACE} && pwd && git reset --hard origin/main &&
             git pull origin main  &&
             echo "we done"
             '
