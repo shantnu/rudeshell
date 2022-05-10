@@ -35,7 +35,7 @@ jobs:
             PRIVATE_KEY: ${{ secrets.AWS_SSH_KEY  }}
             HOSTNAME : ${{ secrets.AWS_IP  }}
             USER_NAME : ${{ secrets.AWS_USERNAME  }}
-        run: |
+        run:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           cd $GITHUB_WORKSPACE && git reset --hard origin/main &&
