@@ -42,3 +42,4 @@ jobs:
           cd ${GITHUB_WORKSPACE} && git reset --hard origin/main &&
             git pull origin main  &&
             echo "we done"
+            '
