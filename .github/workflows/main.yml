@@ -38,6 +38,5 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-          sudo systemctl stop sentiduck &&
           cd $GITHUB_WORKSPACE && git reset --hard origin/main &&
             git pull origin main  && pwd'
