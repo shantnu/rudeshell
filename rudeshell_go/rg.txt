@@ -1,0 +1,5 @@
+rg -o 'func ([a-z]+)' prog_cmds.go -r '$1' | cut -f1
+
+docker-slim build --expose 80 --target cmd_go
+
+kubectl create deployment rudeshell --image=shantnutiwari/rudeshell -o yaml --dry-run > deploy.yml

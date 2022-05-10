@@ -36,6 +36,7 @@ func printHeader() {
 }
 
 func help() {
+	fmt.Println("\n")
 	fmt.Println("Greetings Human! The following commands are available for type for those still  ̶t̶o̶o̶ ̶s̶t̶u̶p̶i̶d̶  ,\n sorry I meant not advanced enough to use telepathy!")
 	fmt.Println("Please use with care!")
 	fmt.Println("\n Linux commands:")
@@ -46,6 +47,7 @@ func help() {
 	fmt.Println("git vi emacs nano python npm \n")
 	fmt.Println("\n 𝕮𝖔𝖔𝖑 𝕮𝖔𝖒𝖒𝖆𝖓𝖉𝖘 Use with CARE!")
 	fmt.Println("save_the_world do_work help_poor")
+	fmt.Println("\n")
 
 }
 func ExecCmdMine(input string) error {
