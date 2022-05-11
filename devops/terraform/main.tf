@@ -32,6 +32,7 @@ resource "aws_instance" "app_server" {
   #!/bin/bash
   cd /home/ubuntu
   git clone https://github.com/shantnu/rudeshell.git
+  chown -R ubuntu:ubuntu rudeshell/
   EOL
   tags = {
     Name = var.instance_name
