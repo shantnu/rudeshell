@@ -22,10 +22,32 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: shantnutiwari/rudeshell
+          tags: |
+              type=sha,prefix={{branch}}-
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./rudeshell_go
+          file: ./rudeshell_go/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -40,8 +62,7 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-          echo "yo! ${GITHUB_WORKSPACE} $GITHUB_WORKSPACE" &&
-          cd ${GITHUB_WORKSPACE} && pwd && git reset --hard origin/main &&
+          cd /home/ubuntu/rudeshell && pwd && git reset --hard origin/main &&
             git pull origin main  &&
             echo "we done"
             '
