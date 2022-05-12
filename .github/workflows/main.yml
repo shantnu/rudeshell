@@ -63,5 +63,6 @@ jobs:
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
           cd /home/ubuntu/rudeshell && pwd && git reset --hard origin/main &&
-            git pull origin main && docker-compose up --force-recreate --build -d && docker image prune -f
+            git pull origin main && cd /home/ubuntu/rudeshell/rudeshell_go &&
+            docker-compose up --force-recreate --build -d && docker image prune -f
             '
