@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+var VERSION = 0.1
+
+func version() {
+	fmt.Printf("Version is %0.2f", VERSION)
+}
 func printHeader() {
 
 	// cmd := exec.Command("clear")
@@ -110,6 +115,10 @@ func ExecCmdMine(input string) error {
 		help()
 	case "q":
 		os.Exit(0)
+	case "v":
+		fallthrough
+	case "version":
+		version()
 	default:
 		random_insults()
 	}
