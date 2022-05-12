@@ -1,3 +1,0 @@
-rudeshell.com {
-    reverse_proxy localhost:30080
-}
