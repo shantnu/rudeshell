@@ -8,6 +8,7 @@
 
 
   - name: checkout repo
+    become: no
     ansible.builtin.git:
       repo: 'https://github.com/shantnu/rudeshell.git'
       dest: /home/ubuntu/rudeshell
