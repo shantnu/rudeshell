@@ -22,18 +22,10 @@ provider "aws" {
 
 resource "aws_instance" "app_server" {
   ami                    = var.aws_ami_name
-  instance_type          = "t2.small"
+  instance_type          = "t2.micro"
   key_name               = "ec2"
   vpc_security_group_ids = ["${aws_security_group.rude-shell-sg-allow-http-ssh.id}"]
 
-
-
-  user_data = <<-EOL
-  #!/bin/bash
-  cd /home/ubuntu
-  git clone https://github.com/shantnu/rudeshell.git
-  chown -R ubuntu:ubuntu rudeshell/
-  EOL
   tags = {
     Name = var.instance_name
   }

@@ -1,6 +1,6 @@
 variable "aws_ami_name" {
   type        = string
-  default     = "ami-0b77b0a9b4a2938d1"
+  default     = "ami-09d56f8956ab235b3"
   description = "My Ami type"
 }
 

@@ -25,9 +25,8 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-
 
 sudo chmod +x /usr/local/bin/docker-compose
 
+docker volume create --name=caddy_data
 
-curl -sfL https://get.k3s.io | sh -
-
- sudo chmod 644 /etc/rancher/k3s/k3s.yaml
-
- docker volume create --name=caddy_data
+cd /home/ubuntu
+git clone https://github.com/shantnu/rudeshell.git
+chown -R ubuntu:ubuntu rudeshell/
