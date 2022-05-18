@@ -30,6 +30,10 @@ func printHeader() {
       |:::::::::::|\
       '-=========-'()
 
+	𝐈𝐧𝐭𝐫𝐨𝐝𝐮𝐜𝐢𝐧𝐠: R̳u̳d̳e̳ ̳S̳h̳e̳l̳l̳,  for people who think Bash is too goddamn polite
+
+	Rude Shell Says:
+
 	Hey human, I am also human like you. I like watching Kardashians while listening to Britney.
 	Us humans so cool, yo!
 
