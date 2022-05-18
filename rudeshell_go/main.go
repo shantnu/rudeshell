@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var VERSION = 0.1
+var VERSION = 0.2
 
 func version() {
 	fmt.Printf("Version is %0.2f", VERSION)
@@ -33,7 +33,7 @@ func printHeader() {
 	Hey human, I am also human like you. I like watching Kardashians while listening to Britney.
 	Us humans so cool, yo!
 
-	To start off, try help
+	To start off, try help. Or try about to learn about this site
 	`
 
 	fmt.Println(header)
@@ -53,7 +53,13 @@ func help() {
 	fmt.Println("\n 𝕮𝖔𝖔𝖑 𝕮𝖔𝖒𝖒𝖆𝖓𝖉𝖘 Use with CARE!")
 	fmt.Println("save_the_world do_work help_poor")
 	fmt.Println("\n")
+	fmt.Println("Meta: help , about")
+	fmt.Println("\n")
 
+}
+
+func about() {
+	fmt.Println("Go here (if you dare): https://new.pythonforengineers.com/blog/learning-about-aws-cloud-by-building-practical-projects/")
 }
 func ExecCmdMine(input string) error {
 	input = strings.TrimSuffix(input, "\n")
@@ -119,6 +125,8 @@ func ExecCmdMine(input string) error {
 		fallthrough
 	case "version":
 		version()
+	case "about":
+		about()
 	default:
 		random_insults()
 	}
