@@ -1,0 +1,48 @@
+---
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name: install packages
+    apt: name={{item}} state=present
+    with_items:
+      - golang-go
+
+# Install the app, note: don't do these tasks with become sudo
+- hosts: webservers
+  become: no
+  tasks:
+  - name: clone repo
+    git:
+      repo: 'https://github.com/shantnu/rudeshell.git'
+      dest: /home/ubuntu/rudeshell
+      update: yes  # Does a git pull if the repo already exists
+
+  - name: Build go code
+    shell: cd /home/ubuntu/rudeshell/rudeshell_go; go build -o rude
+  - name: install gotty
+    shell: go get github.com/yudai/gotty
+
+# Configure app systemd service
+- hosts: webservers
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - name: template systemd service config
+    copy:
+      src: .service
+      dest: /etc/systemd/system/rudeshell.service
+  - name: start systemd app service
+    systemd: name=rudeshell.service state=restarted enabled=yes
+
+# # Run a quick test to verify the site is working
+- hosts: webservers
+  tasks:
+  - name: Check that a page returns a status 200
+    uri:
+      url: https://rudeshell.com/
+      return_content: yes
+    register: this
+    failed_when: "'Welcome to' not in this.content"

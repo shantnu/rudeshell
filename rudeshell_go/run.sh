@@ -1,2 +1,2 @@
 #!/bin/bash
-./gotty -w -p 8000 ./rude
+gotty -w -p 7999 ./rude
