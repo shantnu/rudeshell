@@ -21,6 +21,7 @@
 
   - name: Build go code
     shell: cd /home/ubuntu/rudeshell/rudeshell_go; go build -o rude
+
   - name: install gotty
     shell: go get github.com/yudai/gotty
 
@@ -29,6 +30,9 @@
   become: yes
   become_method: sudo
   tasks:
+  - name: Add pm2 to PATH
+    shell: echo "PATH=$PATH:$HOME/go/bin" > /etc/environment
+    become: true
 
   - name: template systemd service config
     copy:
