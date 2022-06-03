@@ -4,6 +4,5 @@ Description=Run go server in background
 
 [Service]
 User=ubuntu
-WorkingDirectory=/home/ubuntu/sentiduck/go_app
-Environment="PATH=/home/ubuntu/sentiduck/env/bin"
-ExecStart=/home/ubuntu/sentiduck/go_app/senti_server
+WorkingDirectory=/home/ubuntu/rudeshell/rudeshell_go
+ExecStart=/home/ubuntu/rudeshell/rudeshell_go/run.sh
