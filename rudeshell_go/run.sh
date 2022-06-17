@@ -1,2 +1,2 @@
 #!/bin/bash
-~/go/bin/gotty -w -p 7999 ./rude
+./gotty -w -p 80 ./rude
